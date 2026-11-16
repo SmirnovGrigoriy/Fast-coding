@@ -5,6 +5,134 @@
 #include <ctime>
 #include <random>
 
+std::vector<std::string> archive = {
+    "#include <iostream>",
+    "#include <vector>",
+    "#include <string>",
+    "#include <algorithm>",
+    "#include <cmath>",
+    "#include <memory>",
+    "#include <map>",
+    "#include <set>",
+    "#include <fstream>",
+    "#include <sstream>",
+    "#include <chrono>",
+    "#include <thread>",
+    "#include <stdexcept>",
+    "using namespace std;",
+    "using namespace std::chrono_literals;",
+    "int main()",
+    "int main(int argc, char* argv[]) {",
+    "std::cout << \"Hello, World!\" << std::endl;",
+    "std::cout << \"\\n\";",
+    "std::cin >> x;",
+    "std::getline(std::cin, line);",
+    "std::ios_base::sync_with_stdio(false);",
+    "std::cin.tie(NULL);",
+    "return 0;",
+    "return -1;",
+    "std::cout << \"Error: \" << e.what() << '\\n';",
+    "std::cout << \"Result: \" << result << \"\\n\";",
+    "clog << \"Log message\" << endl;",
+    "cerr << \"Fatal error occurred\" << endl;",
+    "fflush(stdout);",
+    "system(\"pause\");",
+    "return EXIT_SUCCESS;",
+    "return EXIT_FAILURE;",
+    "int n = 0;",
+    "double val = 0.0;",
+    "bool flag = false;",
+    "char ch = ' ';",
+    "std::string s = \"\";",
+    "auto start = std::chrono::high_resolution_clock::now();",
+    "const int MAX_VAL = 100;",
+    "constexpr double PI = 3.141592653589793;",
+    "size_t size = 0;",
+    "long long large_num = 0LL;",
+    "unsigned int u_val = 0U;",
+    "float f = 0.0f;",
+    "int arr[100] = {0};",
+    "void* ptr = nullptr;",
+    "auto x = 0;",
+    "decltype(x) y = x;",
+    "static int counter = 0;",
+    "extern int global_var;",
+    "volatile bool stop_flag = false;",
+    "int& ref = x;",
+    "if (condition) { } else if (other_condition) { } else { }",
+    "for (int i = 0; i < n; ++i) {",
+    "for (int i = n - 1; i >= 0; --i) {",
+    "for (auto it = container.begin(); it != container.end(); ++it) {",
+    "for (const auto& item : container) {",
+    "for (auto& item : container) {",
+    "while (condition) {",
+    "while (std::cin >> x) {",
+    "do { } while (condition);",
+    "switch (choice) { case 1: break; case 2: break; default: break; }",
+    "break;",
+    "continue;",
+    "goto error;",
+    "std::vector<int> vec;",
+    "std::vector<std::string> lines;",
+    "vec.push_back(value);",
+    "vec.pop_back();",
+    "vec.clear();",
+    "vec.resize(new_size);",
+    "vec.reserve(capacity);",
+    "if (vec.empty()) {",
+    "size_t len = s.length();",
+    "size_t sz = vec.size();",
+    "std::string sub = s.substr(pos, count);",
+    "size_t found = s.find(target);",
+    "if (found != std::string::npos) {",
+    "std::sort(vec.begin(), vec.end());",
+    "std::reverse(vec.begin(), vec.end());",
+    "auto it = std::find(vec.begin(), vec.end(), val);",
+    "std::map<std::string, int> m;",
+    "m[key] = value;",
+    "auto map_it = m.find(key);",
+    "if (map_it != m.end()) {",
+    "std::set<int> s;",
+    "s.insert(val);",
+    "std::pair<int, int> p = {1, 2};",
+    "auto [first, second] = p;",
+    "std::unordered_map<int, int> umap;",
+    "std::queue<int> q;",
+    "q.push(val);",
+    "q.pop();",
+    "int front_val = q.front();",
+    "void myFunction();",
+    "int calculate(int a, int b);",
+    "template <typename T> class MyClass {",
+    "public:",
+    "private:",
+    "protected:",
+    "MyClass();",
+    "virtual ~MyClass();",
+    "MyClass(const MyClass& other) = delete;",
+    "MyClass& operator=(const MyClass& other) = delete;",
+    "MyClass(MyClass&& other) noexcept;",
+    "MyClass& operator=(MyClass&& other) noexcept;",
+    "friend class OtherClass;",
+    "explicit MyClass(int value);",
+    "virtual void display() const = 0;",
+    "void update() override;",
+    "static MyClass& getInstance() { };",
+    "struct Point { int x; int y; };",
+    "int* p = new int[n];",
+    "delete[] p;",
+    "auto p_smart = std::make_unique<MyClass>();",
+    "std::shared_ptr<MyClass> p_shared = std::make_shared<MyClass>();",
+    "try { } catch (const std::exception& e) { } catch (...) { }",
+    "throw std::runtime_error(\"An error occurred\");",
+    "throw std::invalid_argument(\"Invalid argument\");",
+    "assert(ptr != nullptr);",
+    "static_cast<int>(double_val);",
+    "dynamic_cast<Derived*>(base_ptr);",
+    "reinterpret_cast<char*>(ptr);",
+    "const_cast<char*>(const_str);"
+};
+
 int p_random() {
     std::random_device x;
     std::mt19937 y(x());
@@ -21,4 +149,48 @@ std::vector<int> get_now_time() {
     a[1] = y->tm_min;
     a[2] = y->tm_sec;
     return a;
+}
+
+int main() {
+    std::string s = archive[p_random()], x;
+    std::cout << s << '\n';
+    std::vector<int> start_time = get_now_time();
+    std::cin >> x;
+    std::vector<int> finish_time = get_now_time();
+
+    int count_mistakes = 0;
+
+    if (start_time[2] > finish_time[2]) {
+        finish_time[2] += 60;
+        --finish_time[1];
+    }
+    if (start_time[1] > finish_time[1]) {
+        finish_time[1] += 60;
+        --finish_time[0];
+    }
+    if (start_time[0] > finish_time[0]) {
+        finish_time[0] += 24;
+    }
+
+    std::cout << "Your time - ";
+    std::cout << std::setw(2) << finish_time[0] - start_time[0] << ':' << finish_time[1] - start_time[1] << ':' << finish_time[2] - start_time[2] << '\n';
+    
+    if (x.size() < s.size()) {
+        count_mistakes += s.size() - x.size();
+        for (int i = 0; i < x.size(); ++i) {
+            if (s[i] != x[i]) ++count_mistakes;
+        }
+    }
+    else if (x.size() > s.size()) {
+        count_mistakes += x.size() - s.size();
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] != x[i]) ++count_mistakes;
+        }
+    }
+    else {
+        for (int i = 0; i < s.size(); ++i) {
+            if (s[i] != x[i]) ++count_mistakes;
+        }
+    }
+    std::cout << "Mistakes: " << count_mistakes;
 }
